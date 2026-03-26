@@ -1,0 +1,39 @@
+# Dependencias
+node_modules/
+package-lock.json
+yarn.lock
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Ambiente
+.env
+.env.local
+.env.*.local
+
+# Build
+dist/
+build/
+.nuxt/
+
+# Testing
+coverage/
+.nyc_output/
+
+# Configuración local
+local.db
+*.sqlite
+
+# Temporal
+tmp/
+temp/

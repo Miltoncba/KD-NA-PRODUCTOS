@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KD-NA PRODUCTOS</title>
+    <link rel="stylesheet" href="../src/css/main.css" />
+    <link rel="stylesheet" href="../src/css/cart.css" />
+  </head>
+  <body>
+    <!-- Splash Screen de Carga -->
+    <div id="splash-screen" class="splash-screen">
+      <img
+        src="../src/assets/images/kd-na Intro.png"
+        alt="Bienvenido"
+        class="splash-image"
+      />
+      <div class="splash-loader">
+        <span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <!-- Modal Intro -->
+    <div id="intro-modal" class="intro-modal">
+      <div class="intro-content">
+        <div class="intro-close" onclick="closeIntro()">✕</div>
+        <div class="intro-body">
+          <h1>🏪 KD-NA PRODUCTOS</h1>
+          <p class="intro-subtitle">Bienvenido a tu tienda de confianza</p>
+          <div class="intro-features">
+            <div class="intro-feature">
+              <span>🪨</span>
+              <p>Carbón de Calidad</p>
+            </div>
+            <div class="intro-feature">
+              <span>🍺</span>
+              <p>Cerveza Fresca</p>
+            </div>
+            <div class="intro-feature">
+              <span>🧊</span>
+              <p>Hielo Puro</p>
+            </div>
+          </div>
+          <p class="intro-text">
+            Entrega a domicilio o recogida en tienda. Mayoreo y detalle. ¡Compra
+            ahora!
+          </p>
+          <button class="intro-btn" onclick="closeIntro()">Comenzar →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Login -->
+    <div id="login-modal" class="auth-modal">
+      <div class="auth-content">
+        <button class="close-btn" onclick="closeAuthModal()">✕</button>
+        <h2>Inicia Sesión</h2>
+        <form id="login-form" onsubmit="handleLogin(event)">
+          <div class="form-group">
+            <label for="login-email">Correo Electrónico</label>
+            <input
+              type="email"
+              id="login-email"
+              required
+              placeholder="tu@email.com"
+            />
+          </div>
+          <div class="form-group">
+            <label for="login-password">Contraseña</label>
+            <input
+              type="password"
+              id="login-password"
+              required
+              placeholder="Tu contraseña"
+            />
+          </div>
+          <button type="submit" class="auth-btn">Inicia Sesión</button>
+        </form>
+        <p class="auth-toggle">
+          ¿No tienes cuenta?
+          <a href="#" onclick="switchToRegister(event)">Regístrate aquí</a>
+        </p>
+        <div id="login-error" class="error-message"></div>
+      </div>
+    </div>
+
+    <!-- Modal Registro -->
+    <div id="register-modal" class="auth-modal" style="display: none">
+      <div class="auth-content">
+        <button class="close-btn" onclick="closeAuthModal()">✕</button>
+        <h2>Crear Cuenta</h2>
+        <form id="register-form" onsubmit="handleRegister(event)">
+          <div class="form-group">
+            <label for="register-name">Nombre Completo</label>
+            <input
+              type="text"
+              id="register-name"
+              required
+              placeholder="Tu nombre"
+            />
+          </div>
+          <div class="form-group">
+            <label for="register-email">Correo Electrónico</label>
+            <input
+              type="email"
+              id="register-email"
+              required
+              placeholder="tu@email.com"
+            />
+          </div>
+          <div class="form-group">
+            <label for="register-phone">Teléfono</label>
+            <input
+              type="tel"
+              id="register-phone"
+              required
+              placeholder="Tu teléfono"
+            />
+          </div>
+          <div class="form-group">
+            <label for="register-password">Contraseña</label>
+            <input
+              type="password"
+              id="register-password"
+              required
+              placeholder="Mínimo 6 caracteres"
+            />
+          </div>
+          <div class="form-group">
+            <label for="register-confirm">Confirmar Contraseña</label>
+            <input
+              type="password"
+              id="register-confirm"
+              required
+              placeholder="Confirma tu contraseña"
+            />
+          </div>
+          <button type="submit" class="auth-btn">Crear Cuenta</button>
+        </form>
+        <p class="auth-toggle">
+          ¿Ya tienes cuenta?
+          <a href="#" onclick="switchToLogin(event)">Inicia sesión aquí</a>
+        </p>
+        <div id="register-error" class="error-message"></div>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <header id="navbar"></header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-content">
+        <img
+          src="../src/assets/images/Logo inicio.jpg"
+          alt="KD-NA Logo"
+          class="hero-logo"
+        />
+        <h1>Compra al detalle o mayoreo</h1>
+        <p>Carbón, Cerveza y Hielo directo a tu negocio o casa</p>
+        <button onclick="openCatalog()">Haz tu pedido ahora</button>
+      </div>
+    </section>
+
+    <!-- Galería de Productos -->
+    <section class="products-showcase">
+      <div class="showcase-container">
+        <h2>Nuestros Productos</h2>
+        <p class="showcase-subtitle">Calidad garantizada para tu negocio</p>
+        <div class="showcase-grid">
+          <!-- Carbón del Norte -->
+          <div class="showcase-card">
+            <div class="showcase-image-placeholder">
+              <img
+                src="../src/assets/images/carbon.jpg"
+                alt="Carbón del Norte"
+                class="showcase-image-img"
+              />
+            </div>
+            <h3>Carbón del Norte</h3>
+            <p class="showcase-description">
+              Carbón de alta calidad, perfecto para asados y negocios de comidas
+              rápidas. Disponible en diferentes presentaciones.
+            </p>
+            <ul class="showcase-features">
+              <li>✓ Carbón puro</li>
+              <li>✓ Larga duración</li>
+              <li>✓ Entrega rápida</li>
+            </ul>
+          </div>
+
+          <!-- Cervezas Premium -->
+          <div class="showcase-card">
+            <div class="showcase-image-placeholder">
+              <img
+                src="../src/assets/images/cerveza.jpg"
+                alt="Cervezas Premium"
+                class="showcase-image-img"
+              />
+            </div>
+            <h3>Cervezas Premium</h3>
+            <p class="showcase-description">
+              Marcas selectas: Tecate Light, Tecate Rojo e Indio. Vendidas por
+              tapas (24 piezas) para mayor comodidad.
+            </p>
+            <ul class="showcase-features">
+              <li>✓ Marcas reconocidas</li>
+              <li>✓ Por tapas (24 piezas)</li>
+              <li>✓ Bebidas frías</li>
+            </ul>
+          </div>
+
+          <!-- Hielo Puro -->
+          <div class="showcase-card">
+            <div class="showcase-image-placeholder">
+              <img
+                src="../src/assets/images/hielo.jpg"
+                alt="Hielo Puro"
+                class="showcase-image-img"
+              />
+            </div>
+            <h3>Hielo Puro</h3>
+            <p class="showcase-description">
+              Hielo natural 100% puro. Ideal para eventos, centros nocturnos,
+              restaurantes y uso doméstico.
+            </p>
+            <ul class="showcase-features">
+              <li>✓ 100% puro</li>
+              <li>✓ Hielo cristalino</li>
+              <li>✓ Siempre disponible</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Catálogo -->
+    <main id="catalog" class="catalog-container"></main>
+
+    <!-- Icono Carrito -->
+    <div id="cart-icon" class="cart-icon" onclick="toggleCart()">
+      🛒
+      <span id="cart-count">0</span>
+    </div>
+
+    <!-- Logo Sticky al Scroll -->
+    <img
+      id="scroll-logo"
+      src="../src/assets/images/kd-na logo simple .png"
+      alt="KD-NA Logo"
+      class="scroll-logo"
+    />
+
+    <!-- Panel Carrito -->
+    <div id="cart-panel" class="cart-panel"></div>
+
+    <!-- Modal Selector de Cantidad -->
+    <div id="quantity-modal" class="quantity-modal">
+      <div class="quantity-content">
+        <h3>Selecciona cantidad para <span id="qty-product-name"></span></h3>
+        <div class="quantity-buttons"></div>
+        <div class="quantity-custom">
+          <p id="custom-qty-label">O ingresa otra cantidad (máx. 200):</p>
+          <input
+            type="number"
+            id="custom-quantity"
+            min="1"
+            max="200"
+            placeholder="Cantidad"
+          />
+          <button
+            class="qty-confirm"
+            id="confirm-custom-btn"
+            onclick="confirmCustomQuantity()"
+          >
+            Agregar al carrito
+          </button>
+        </div>
+        <button class="qty-cancel" onclick="closeQuantityModal()">
+          Cancelar
+        </button>
+      </div>
+    </div>
+
+    <!-- Modal Checkout -->
+    <div id="checkout-modal" class="checkout-modal">
+      <div class="checkout-content">
+        <div class="checkout-header">
+          <h2>🎯 Completar tu Pedido</h2>
+          <button class="close-checkout" onclick="closeCheckout()">✕</button>
+        </div>
+
+        <!-- Resumen del Pedido -->
+        <div class="checkout-section">
+          <div class="order-summary" id="order-summary"></div>
+        </div>
+
+        <!-- Tabs para formulario -->
+        <div class="checkout-tabs">
+          <button class="tab-btn active" data-tab="personal">
+            Información
+          </button>
+          <button class="tab-btn" data-tab="shipping">Entrega</button>
+          <button class="tab-btn" data-tab="payment">Pago</button>
+        </div>
+
+        <!-- Información del Cliente -->
+        <div class="checkout-section tab-content" id="personal">
+          <h3>📋 Información Personal</h3>
+          <div class="form-group">
+            <label for="customer-name">Nombre Completo *</label>
+            <input
+              type="text"
+              id="customer-name"
+              placeholder="Juan Pérez"
+              required
+            />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="customer-phone">Teléfono *</label>
+              <input
+                type="tel"
+                id="customer-phone"
+                placeholder="5551234567"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="customer-email">Correo *</label>
+              <input
+                type="email"
+                id="customer-email"
+                placeholder="tu@correo.com"
+                required
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Tipo de Entrega -->
+        <div
+          class="checkout-section tab-content"
+          id="shipping"
+          style="display: none"
+        >
+          <h3>🚗 Tipo de Entrega</h3>
+          <div class="delivery-options-large">
+            <label class="delivery-card">
+              <input type="radio" name="delivery" value="delivery" checked />
+              <div class="delivery-card-content">
+                <span class="delivery-icon">🚗</span>
+                <span class="delivery-title">A Domicilio</span>
+                <span class="delivery-desc">Entrega en tu dirección</span>
+              </div>
+            </label>
+            <label class="delivery-card">
+              <input type="radio" name="delivery" value="pickup" />
+              <div class="delivery-card-content">
+                <span class="delivery-icon">🏪</span>
+                <span class="delivery-title">Recoger en Tienda</span>
+                <span class="delivery-desc">Retira tu pedido</span>
+              </div>
+            </label>
+          </div>
+          <div class="form-group">
+            <label for="customer-address">Dirección *</label>
+            <input
+              type="text"
+              id="customer-address"
+              placeholder="Calle Principal 123, Apto 4B"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Información de Tarjeta -->
+        <div
+          class="checkout-section tab-content"
+          id="payment"
+          style="display: none"
+        >
+          <h3>💳 Información de Pago</h3>
+          <div class="form-group">
+            <label for="card-name">Nombre en la Tarjeta *</label>
+            <input
+              type="text"
+              id="card-name"
+              placeholder="Juan Pérez"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="card-number">Número de Tarjeta *</label>
+            <input
+              type="text"
+              id="card-number"
+              placeholder="1234 5678 9012 3456"
+              maxlength="19"
+              required
+            />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="card-expiry">Vencimiento (MM/AA) *</label>
+              <input
+                type="text"
+                id="card-expiry"
+                placeholder="12/25"
+                maxlength="5"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="card-cvv">CVV *</label>
+              <input
+                type="text"
+                id="card-cvv"
+                placeholder="123"
+                maxlength="4"
+                required
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-buttons">
+          <button class="confirm-btn" onclick="processCheckout()">
+            ✓ Confirmar Pedido
+          </button>
+          <button class="cancel-btn" onclick="closeCheckout()">
+            ✕ Cancelar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer"></footer>
+
+    <script src="../src/js/auth.js"></script>
+    <script src="../src/js/payments.js"></script>
+    <script src="../src/js/app.js"></script>
+    <script src="../src/js/cart.js"></script>
+  </body>
+</html>
